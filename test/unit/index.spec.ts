@@ -3,6 +3,12 @@ import { PinoLogger } from "../../src/index.js";
 
 describe("index", function () {
   describe("PinoLogger", function () {
+    describe("create", function () {
+      it("should work with no parameters", function () {
+        const logger = PinoLogger.create();
+        expect(logger).to.be.instanceOf(PinoLogger);
+      });
+    });
     describe("isTraceEnabled", function () {
       it("should return true when the logger is set to trace level or lower", function () {
         const logger = PinoLogger.create({ level: "trace" });
