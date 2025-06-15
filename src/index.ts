@@ -83,8 +83,8 @@ export class PinoLogger implements Logger {
    *
    * @returns A new instance of {@link PinoLogger}.
    */
-  static create(params: { level?: LogLevel; name?: string }): PinoLogger {
-    const { level = "info", name } = params;
+  static create(params?: { level?: LogLevel; name?: string }): PinoLogger {
+    const { level = "info", name } = params || {};
     const logger = pino.pino({ level, name });
 
     return new PinoLogger({ logger });
