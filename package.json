@@ -1,16 +1,15 @@
 {
-  "name": "@infra-blocks/lib-template",
+  "name": "@infra-blocks/pino-logger",
   "version": "0.0.0",
-  "description": "This repository is a template to generate repositories meant to hold the source code of NPM packages written in TypeScript.",
+  "description": "Implementation of the @infra-blocks/logger-interface for the pino logger",
   "keywords": [
-    "template",
-    "typescript",
-    "esm",
-    "cjs"
+    "logger",
+    "pino",
+    "typescript"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/infra-blocks/ts-lib-template.git"
+    "url": "https://github.com/infra-blocks/ts-pino-logger.git"
   },
   "license": "ISC",
   "author": "",
@@ -36,6 +35,10 @@
     "test:coverage:lcov": "c8 --reporter=lcov npm run test",
     "test:integration": "mocha --config test/integration/.mocharc.js 'test/integration/**/*.spec.ts'",
     "test:unit": "mocha --config test/unit/.mocharc.cjs 'test/unit/**/*.spec.ts'"
+  },
+  "dependencies": {
+    "@infra-blocks/logger-interface": "^0.2.0",
+    "pino": "^9.7.0"
   },
   "devDependencies": {
     "@infra-blocks/test": "^0.1.1",
