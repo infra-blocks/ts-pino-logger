@@ -1,10 +1,18 @@
 import { Logger, LogLevel } from "@infra-blocks/logger-interface";
 import pino from "pino";
 
+export interface IPinoLogger extends Logger {
+  trace: pino.LogFn;
+  debug: pino.LogFn;
+  info: pino.LogFn;
+  warn: pino.LogFn;
+  error: pino.LogFn;
+}
+
 /**
  * A thin wrapper around the {@link pino.Logger} that implements the {@link Logger} interface.
  */
-export class PinoLogger implements Logger {
+export class PinoLogger implements IPinoLogger {
   private readonly logger: pino.Logger;
 
   private constructor(params: { logger: pino.Logger }) {
@@ -32,24 +40,44 @@ export class PinoLogger implements Logger {
     level satisfies never;
   }
 
-  trace(message: string, ...args: unknown[]): void {
-    this.logger.trace(message, ...args);
+  trace<T extends object>(
+    data: unknown | T | string,
+    message?: string,
+    ...args: unknown[]
+  ): void {
+    this.logger.trace(data, message, ...args);
   }
 
-  debug(message: string, ...args: unknown[]): void {
-    this.logger.debug(message, ...args);
+  debug<T extends object>(
+    data: unknown | T | string,
+    message?: string,
+    ...args: unknown[]
+  ): void {
+    this.logger.debug(data, message, ...args);
   }
 
-  info(message: string, ...args: unknown[]): void {
-    this.logger.info(message, ...args);
+  info<T extends object>(
+    data: unknown | T | string,
+    message?: string,
+    ...args: unknown[]
+  ): void {
+    this.logger.info(data, message, ...args);
   }
 
-  warn(message: string, ...args: unknown[]): void {
-    this.logger.warn(message, ...args);
+  warn<T extends object>(
+    data: unknown | T | string,
+    message?: string,
+    ...args: unknown[]
+  ): void {
+    this.logger.warn(data, message, ...args);
   }
 
-  error(message: string, ...args: unknown[]): void {
-    this.logger.error(message, ...args);
+  error<T extends object>(
+    data: unknown | T | string,
+    message?: string,
+    ...args: unknown[]
+  ): void {
+    this.logger.error(data, message, ...args);
   }
 
   isTraceEnabled(): boolean {
