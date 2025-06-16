@@ -1,6 +1,6 @@
 {
   "name": "@infra-blocks/pino-logger",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Implementation of the @infra-blocks/logger-interface for the pino logger",
   "keywords": [
     "logger",
